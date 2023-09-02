@@ -10,6 +10,11 @@ public class GuardPatrolState : GuardState
 
     public override void OnUpdate()
     {
+        if (Controller.Vision.PlayerVisible)
+        {
+            Controller.TransitionToChase();
+        }
+
         Controller.Movement.MoveTowardsTarget();
         if (Controller.Movement.IsAtTarget())
         {

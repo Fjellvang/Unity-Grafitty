@@ -1,4 +1,5 @@
 using System;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
+    [SerializeField]
+    Vector3Variable _position;
 
     [SerializeField] private float speed;
 
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
+        _position.Value = transform.position;
     }
 
     private void ApplyGravity()

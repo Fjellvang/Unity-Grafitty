@@ -1,7 +1,4 @@
-﻿using Dwarf.DesignPatterns.State;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GuardController : MonoBehaviour
 {

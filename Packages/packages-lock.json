@@ -254,13 +254,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "dk.dwarf.utilities": {
-      "version": "git@github.com:dwarfhq/dwarf-unity.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "67b5f1c9cd2f3188ee1546370f169f38a63be253"
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

@@ -1,4 +1,3 @@
-using Dwarf.DesignPatterns.State;
 using UnityEngine;
 
 public class GuardState : MonoBehaviour, IState

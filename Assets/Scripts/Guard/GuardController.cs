@@ -7,7 +7,10 @@ public class GuardController : MonoBehaviour
     GuardPatrolState _patrolState;
     [SerializeField]
     GuardIdleState _idleState;
+    [SerializeField]
+    GuardChaseState _chaseState;
 
+    public GuardVision Vision;
     public Movement Movement;
     public WaypointCollection WaypointCollection;
 
@@ -31,5 +34,10 @@ public class GuardController : MonoBehaviour
     public void TransitionToPatrol()
     {
         _stateMachine.TransitionTo(_patrolState);
+    }
+
+    public void TransitionToChase()
+    {
+        _stateMachine.TransitionTo(_chaseState);
     }
 }

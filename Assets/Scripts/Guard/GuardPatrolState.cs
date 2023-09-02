@@ -6,22 +6,14 @@ public class GuardPatrolState : GuardState
     {
         var point = Controller.WaypointCollection.Points[Random.Range(0, Controller.WaypointCollection.Points.Length-1)];
         Controller.Movement.SetTarget(point);
-
-        Controller.Movement.OnTargetReached += Movement_OnTargetReached;
-    }
-
-    private void Movement_OnTargetReached()
-    {
-        Controller.TransitionToIdle();
     }
 
     public override void OnUpdate()
     {
         Controller.Movement.MoveTowardsTarget();
-    }
-
-    public override void OnExit()
-    {
-        Controller.Movement.OnTargetReached -= Movement_OnTargetReached;
+        if (Controller.Movement.IsAtTarget())
+        {
+            Controller.TransitionToIdle();
+        }
     }
 }

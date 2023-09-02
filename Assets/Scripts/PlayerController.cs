@@ -11,23 +11,20 @@ public class PlayerController : MonoBehaviour
     {
         move = context.ReadValue<Vector2>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        movePlayer();
+        MovePlayer();
     }
 
-    public void movePlayer()
+    public void MovePlayer()
     {
         Vector3 movement = new Vector3(move.x,0f, move.y);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
+        if  (movement!= Vector3.zero) {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
+        }
+        
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }

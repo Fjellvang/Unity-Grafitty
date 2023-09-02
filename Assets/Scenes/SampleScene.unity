@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,18 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &14264164 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7528972870599717364, guid: 35a089fff0c5f3442bee6bfdfa005326,
-    type: 3}
-  m_PrefabInstance: {fileID: 2949283375974130928}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f66b92fae44bc4c8312250b06b3139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &92251704
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +352,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -890,8 +879,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134791646}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15063903, y: 0.000000017010038, z: -0.0000000025919527, w: 0.98858887}
-  m_LocalPosition: {x: 0, y: 4.12, z: -10}
+  m_LocalRotation: {x: 0.16446202, y: -1e-45, z: 0, w: 0.98638344}
+  m_LocalPosition: {x: 0, y: 4.12, z: -13.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1399,7 +1388,7 @@ Transform:
   m_GameObject: {fileID: 2036799464}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalPosition: {x: 0, y: 0.69, z: -3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1413,11 +1402,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2066517680656478678, guid: 35a089fff0c5f3442bee6bfdfa005326,
-        type: 3}
-      propertyPath: _idleState
-      value: 
-      objectReference: {fileID: 14264164}
     - target: {fileID: 2066517680656478678, guid: 35a089fff0c5f3442bee6bfdfa005326,
         type: 3}
       propertyPath: WaypointCollection
@@ -1477,11 +1461,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6933454671509641334, guid: 35a089fff0c5f3442bee6bfdfa005326,
-        type: 3}
-      propertyPath: _speed
-      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

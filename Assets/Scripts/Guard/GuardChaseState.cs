@@ -14,7 +14,6 @@ public class GuardChaseState : GuardState
             Controller.TransitionToPatrol();
         }
 
-        Controller.Movement.SetTarget(_playerPosition.Value);
-        Controller.Movement.MoveTowardsTarget();
+        Controller.NavMeshAgent.SetDestination(_playerPosition.Value);
     }
 }

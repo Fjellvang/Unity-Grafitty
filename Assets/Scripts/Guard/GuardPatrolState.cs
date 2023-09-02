@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class GuardPatrolState : GuardState
 {
     public override void OnEnter()
     {
         var point = Controller.WaypointCollection.Points[Random.Range(0, Controller.WaypointCollection.Points.Length-1)];
-        Controller.Movement.SetTarget(point);
+        Controller.NavMeshAgent.SetDestination(point);
     }
 
     public override void OnUpdate()
@@ -15,8 +16,7 @@ public class GuardPatrolState : GuardState
             Controller.TransitionToChase();
         }
 
-        Controller.Movement.MoveTowardsTarget();
-        if (Controller.Movement.IsAtTarget())
+        if (Controller.NavMeshAgent.remainingDistance <= Controller.NavMeshAgent.stoppingDistance)
         {
             Controller.TransitionToIdle();
         }

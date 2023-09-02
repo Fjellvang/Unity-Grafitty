@@ -15,7 +15,7 @@ public class GuardVision : MonoBehaviour
             return; 
         }
 
-        var guardDirection = _controller.Movement.Direction;
+        var guardDirection = _controller.transform.forward;
         var playerDirection = other.transform.position - transform.position;
 
         var angle = Vector3.Angle(guardDirection, playerDirection);

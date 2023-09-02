@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2011012828373198594}
   - component: {fileID: 3320891902629529605}
   - component: {fileID: 7957683682697784797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 6362400373810230183}
   - component: {fileID: 118941762635561217}
   - component: {fileID: 6015702321310038606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 4202548708814910331}
   - component: {fileID: 3108015043005407921}
   - component: {fileID: 6561044369187117222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 7029887424024551631}
   - component: {fileID: 5146208022810768746}
   - component: {fileID: 5412094810349318266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

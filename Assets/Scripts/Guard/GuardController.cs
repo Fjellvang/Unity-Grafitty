@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class GuardController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GuardController : MonoBehaviour
     GuardChaseState _chaseState;
 
     public GuardVision Vision;
-    public Movement Movement;
+    public NavMeshAgent NavMeshAgent;
     public WaypointCollection WaypointCollection;
 
     void Start()

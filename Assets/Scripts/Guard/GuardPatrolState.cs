@@ -19,4 +19,9 @@ public class GuardPatrolState : GuardState
     {
         Controller.Movement.MoveTowardsTarget();
     }
+
+    public override void OnExit()
+    {
+        Controller.Movement.OnTargetReached -= Movement_OnTargetReached;
+    }
 }

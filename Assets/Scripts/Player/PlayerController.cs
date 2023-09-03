@@ -48,8 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //var tmp = _moveInput.Value;
-        var rotation = Quaternion.AngleAxis(_cameraAngle.Value - 90, Vector3.forward);
+        var rotation = Quaternion.AngleAxis(-_cameraAngle.Value, Vector3.forward);
         var rotattedInput = rotation * _moveInput.Value;
 
         _direction = new Vector3(rotattedInput.x, 0, rotattedInput.y);

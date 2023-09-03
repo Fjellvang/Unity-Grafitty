@@ -1,5 +1,5 @@
 {
-    "name": "InputManager",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -25,6 +25,39 @@
                 }
             ],
             "bindings": [
+                {
+                    "name": "Touch Position",
+                    "id": "e9b9453e-8a30-49f4-893e-515c2ab02fdc",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "01dbd936-0363-4496-a5a3-fe3ff3d8f95e",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "725410c8-2a22-43ac-8de7-ccf5d3f6cb39",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
                 {
                     "name": "WASD",
                     "id": "5ee7a45c-1cca-4b3e-9883-68cb6cfec3ed",

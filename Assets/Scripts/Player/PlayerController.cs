@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,11 +9,14 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables: Movement
 
-    private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
     [SerializeField]
     Vector3Variable _position;
+    [SerializeField]
+    Vector2Variable _moveInput;
+    [SerializeField]
+    FloatVariable _cameraAngle;
 
     [SerializeField] private float speed;
 
@@ -41,8 +45,14 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
+
     private void Update()
     {
+        //var tmp = _moveInput.Value;
+        var rotation = Quaternion.AngleAxis(_cameraAngle.Value - 90, Vector3.forward);
+        var rotattedInput = rotation * _moveInput.Value;
+
+        _direction = new Vector3(rotattedInput.x, 0, rotattedInput.y);
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
@@ -65,7 +75,7 @@ public class PlayerController : MonoBehaviour
     
     private void ApplyRotation()
     {
-        if (_input.sqrMagnitude == 0) return;
+        if (_moveInput.Value.sqrMagnitude == 0) return;
         
         var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
         var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
@@ -74,13 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        _characterController.Move(_direction * speed * Time.deltaTime);
-    }
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        _input = context.ReadValue<Vector2>();
-        _direction = new Vector3(_input.x, 0.0f, _input.y);
+        _characterController.Move(speed * Time.deltaTime * _direction);
     }
 
     public void Jump(InputAction.CallbackContext context)

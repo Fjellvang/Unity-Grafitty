@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
+[SelectionBase]
 public class GuardController : MonoBehaviour
 {
     StateMachine<GuardState> _stateMachine = new();

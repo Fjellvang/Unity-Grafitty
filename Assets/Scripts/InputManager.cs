@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     PlayerInput _playerInput;
     bool _isPressing = false;
     Vector2 _startPosition;
-    [SerializeField, Range(1f, 200f)]
+    [SerializeField, Range(1f, 300f)]
     float _maxJoystickLength; // TODO: find a better name for this, its how far the finger should slide
 
     [SerializeField]

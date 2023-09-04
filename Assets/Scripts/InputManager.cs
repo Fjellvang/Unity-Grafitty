@@ -1,4 +1,4 @@
-﻿using UnityAtoms.BaseAtoms;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     float _maxJoystickLength; // TODO: find a better name for this, its how far the finger should slide
 
     [SerializeField]
-    Vector2Variable _playerMoveInput;
+    PlayerInputData _playerInputData;
 
     private void Awake()
     {
@@ -27,10 +27,17 @@ public class InputManager : MonoBehaviour
     {
         _playerInput.Player.Move.started += Move_started;
         _playerInput.Player.Move.canceled += Move_canceled;
+        _playerInput.Player.JumpInteract.started += JumpInteract_started;
     }
+
+    private void JumpInteract_started(InputAction.CallbackContext context)
+    {
+        _playerInputData.OnInteract();
+    }
+
     private void Update()
     {
-        _playerMoveInput.Value = Vector2.zero;
+        _playerInputData.Move = Vector2.zero;
         if (_isPressing)
         {
             var value = _playerInput.Player.Move.ReadValue<Vector2>();
@@ -45,8 +52,7 @@ public class InputManager : MonoBehaviour
 
             delta /= _maxJoystickLength;
 
-            Debug.Log(delta.magnitude);
-            _playerMoveInput.Value = delta; 
+            _playerInputData.Move = delta;
         }
     }
 

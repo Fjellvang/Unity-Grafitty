@@ -1,8 +1,5 @@
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -14,29 +11,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Vector3Variable _position;
     [SerializeField]
-    Vector2Variable _moveInput;
+    PlayerInputData _playerInputData;
     [SerializeField]
     FloatVariable _cameraAngle;
+    [SerializeField]
+    InteractableZoneCheck _interactableZoneCheck;
 
     [SerializeField] private float speed;
 
     #endregion
     #region Variables: Rotation
 
-    [SerializeField] private float smoothTime = 0.05f;
+    [SerializeField]
+    private float smoothTime = 0.05f;
     private float _currentVelocity;
 
     #endregion
     #region Variables: Gravity
 
     private float _gravity = -9.81f;
-    [SerializeField] private float gravityMultiplier = 3.0f;
+    [SerializeField] 
+    private float gravityMultiplier = 3.0f;
     private float _velocity;
 
     #endregion
     #region Variables: Jumping
 
-    [SerializeField] private float jumpPower;
+    [SerializeField]
+    private float jumpPower;
+
 
     #endregion
     
@@ -45,11 +48,20 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
+    private void OnEnable()
+    {
+        _playerInputData.Interacted += Jump;
+    }
+
+    private void OnDisable()
+    {
+        _playerInputData.Interacted -= Jump;
+    }
 
     private void Update()
     {
         var rotation = Quaternion.AngleAxis(-_cameraAngle.Value, Vector3.forward);
-        var rotattedInput = rotation * _moveInput.Value;
+        var rotattedInput = rotation * _playerInputData.Move;//_moveInput.Value;
 
         _direction = new Vector3(rotattedInput.x, 0, rotattedInput.y);
         ApplyGravity();
@@ -74,7 +86,7 @@ public class PlayerController : MonoBehaviour
     
     private void ApplyRotation()
     {
-        if (_moveInput.Value.sqrMagnitude == 0) return;
+        if (_playerInputData.Move.sqrMagnitude == 0) return;
         
         var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
         var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
@@ -86,9 +98,14 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(speed * Time.deltaTime * _direction);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    private void Jump()
     {
-        if (!context.started) return;
+        if (_interactableZoneCheck.NearbyInteractable != null)
+        {
+            _interactableZoneCheck.NearbyInteractable.Interact();
+            return;
+        }
+
         if (!IsGrounded()) return;
 
         _velocity += jumpPower;
